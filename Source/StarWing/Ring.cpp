@@ -23,6 +23,11 @@ ARing::ARing()
 	RingMesh->SetStaticMesh(ConstructorStatics.RingMesh.Get());
 	RootComponent = RingMesh;
 
+	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerMesh0"));
+	Trigger->AttachTo(RootComponent);
+
+	Trigger->OnComponentBeginOverlap.AddDynamic(this, &ARing::OnBeginOverlap);
+	Trigger->OnComponentEndOverlap.AddDynamic(this, &ARing::OnEndOverlap);
 
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
@@ -43,3 +48,13 @@ void ARing::Tick( float DeltaTime )
 
 }
 
+void ARing::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	RingMesh->SetVisibility(false);
+}
+
+
+void ARing::OnEndOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	RingMesh->SetVisibility(true);
+}
