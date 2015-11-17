@@ -25,9 +25,12 @@ ARing::ARing()
 
 	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerMesh0"));
 	Trigger->AttachTo(RootComponent);
+	
+
 
 	Trigger->OnComponentBeginOverlap.AddDynamic(this, &ARing::OnBeginOverlap);
 	Trigger->OnComponentEndOverlap.AddDynamic(this, &ARing::OnEndOverlap);
+
 
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;

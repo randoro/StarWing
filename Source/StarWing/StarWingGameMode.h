@@ -8,8 +8,16 @@ class AStarWingGameMode : public AGameMode
 {
 	GENERATED_BODY()
 
+	UPROPERTY(EditDefaultsOnly)
+	TSubclassOf<class UUserWidget> HUDWidgetClass;
+
+	UPROPERTY()
+	class UUserWidget* CurrentWidget;
+
 public:
 	AStarWingGameMode();
+
+	void BeginPlay();
 };
 
 

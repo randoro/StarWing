@@ -3,7 +3,7 @@
 #ifndef __STARWING_H__
 #define __STARWING_H__
 
-#include "EngineMinimal.h"
+#include "Engine.h"
 
 DECLARE_LOG_CATEGORY_EXTERN(LogFlying, Log, All);
 
