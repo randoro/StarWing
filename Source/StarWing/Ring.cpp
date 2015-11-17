@@ -7,6 +7,23 @@
 // Sets default values
 ARing::ARing()
 {
+	// Structure to hold one-time initialization
+	struct FConstructorStatics
+	{
+		ConstructorHelpers::FObjectFinderOptional<UStaticMesh> RingMesh;
+		FConstructorStatics()
+			: RingMesh(TEXT("/Game/ring.ring"))
+		{
+		}
+	};
+	static FConstructorStatics ConstructorStatics;
+
+	// Create static mesh component
+	RingMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("RingMesh0"));
+	RingMesh->SetStaticMesh(ConstructorStatics.RingMesh.Get());
+	RootComponent = RingMesh;
+
+
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 

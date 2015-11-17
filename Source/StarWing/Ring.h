@@ -10,6 +10,10 @@ class STARWING_API ARing : public AActor
 {
 	GENERATED_BODY()
 	
+	/** StaticMesh component that will be the visuals for our flying actor */
+	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
+	class UStaticMeshComponent* RingMesh;
+
 public:	
 	// Sets default values for this actor's properties
 	ARing();
