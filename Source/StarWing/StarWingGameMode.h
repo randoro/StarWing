@@ -21,6 +21,11 @@ public:
 	AStarWingGameMode();
 
 	void BeginPlay();
+
+	void Tick(float DeltaTime);
+
+	UFUNCTION(BlueprintPure, Category = "Time")
+	int32 GetTime();
 };
 
 

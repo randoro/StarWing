@@ -24,3 +24,14 @@ void AStarWingGameMode::BeginPlay()
 		
 	}
 }
+
+void AStarWingGameMode::Tick(float DeltaTime)
+{
+	Super::Tick(DeltaTime);
+
+}
+
+int32 AStarWingGameMode::GetTime() 
+{
+	return Time;
+}
