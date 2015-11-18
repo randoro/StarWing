@@ -14,6 +14,9 @@ class AStarWingGameMode : public AGameMode
 	UPROPERTY()
 	class UUserWidget* CurrentWidget;
 
+	UPROPERTY(VisibleAnywhere)
+	int32 Time = 2000;
+
 public:
 	AStarWingGameMode();
 
