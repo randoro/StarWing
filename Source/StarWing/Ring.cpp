@@ -2,6 +2,7 @@
 
 #include "StarWing.h"
 #include "Ring.h"
+#include "StarWingGameMode.h"
 
 
 // Sets default values
@@ -54,6 +55,9 @@ void ARing::Tick( float DeltaTime )
 void ARing::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
 	RingMesh->SetVisibility(false);
+	AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
+	gm->GetTime();
+	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();
 }
 
 

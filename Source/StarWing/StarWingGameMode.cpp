@@ -29,6 +29,7 @@ void AStarWingGameMode::Tick(float DeltaTime)
 {
 	Super::Tick(DeltaTime);
 
+	Time--;
 }
 
 int32 AStarWingGameMode::GetTime() 
