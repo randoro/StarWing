@@ -26,6 +26,9 @@ public:
 
 	UFUNCTION(BlueprintPure, Category = "Time")
 	int32 GetTime();
+
+	UFUNCTION(Category = "Time")
+	void AddTime(int32 AddedTime);
 };
 
 

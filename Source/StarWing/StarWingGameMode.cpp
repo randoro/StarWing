@@ -36,3 +36,8 @@ int32 AStarWingGameMode::GetTime()
 {
 	return Time;
 }
+
+void AStarWingGameMode::AddTime(int32 AddedTime) 
+{
+	Time += AddedTime;
+}
