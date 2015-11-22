@@ -1,6 +1,7 @@
 // Copyright 1998-2015 Epic Games, Inc. All Rights Reserved.
 #pragma once
 #include "GameFramework/Pawn.h"
+#include "Bullet.h"
 #include "StarWingPawn.generated.h"
 
 UCLASS(config=Game)
@@ -62,6 +63,9 @@ private:
 	/** Min forward speed */
 	UPROPERTY(Category=Yaw, EditAnywhere)
 	float MinSpeed;
+
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ABullet> BulletClass;
 
 	/** Current forward speed */
 	float CurrentForwardSpeed;

@@ -127,5 +127,5 @@ void AStarWingPawn::MoveRightInput(float Val)
 
 void AStarWingPawn::ShootBullet()
 {
-	PlaneMesh->ToggleVisibility();
+	GetWorld()->SpawnActor<ABullet>(BulletClass, FVector(), FRotator());
 }
