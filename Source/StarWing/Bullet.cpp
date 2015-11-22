@@ -35,7 +35,7 @@ ABullet::ABullet()
 	MovementComponent->MaxSpeed = 3000.f;
 	MovementComponent->bShouldBounce = false;
 
-	//SetLifeSpan(5000.0f);
+	InitialLifeSpan = 3.0f;
 	
 
 }
