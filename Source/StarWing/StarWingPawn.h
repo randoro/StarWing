@@ -28,6 +28,9 @@ public:
 	virtual void NotifyHit(class UPrimitiveComponent* MyComp, class AActor* Other, class UPrimitiveComponent* OtherComp, bool bSelfMoved, FVector HitLocation, FVector HitNormal, FVector NormalImpulse, const FHitResult& Hit) override;
 	// End AActor overrides
 
+	UPROPERTY(EditAnywhere)
+	TSubclassOf<ABullet> BulletClass;
+
 protected:
 
 	// Begin APawn overrides
@@ -64,8 +67,6 @@ private:
 	UPROPERTY(Category=Yaw, EditAnywhere)
 	float MinSpeed;
 
-	UPROPERTY(EditAnywhere)
-	TSubclassOf<ABullet> BulletClass;
 
 	/** Current forward speed */
 	float CurrentForwardSpeed;
