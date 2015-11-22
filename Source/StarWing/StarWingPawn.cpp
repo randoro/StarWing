@@ -123,3 +123,8 @@ void AStarWingPawn::MoveRightInput(float Val)
 	// Smoothly interpolate roll speed
 	CurrentRollSpeed = FMath::FInterpTo(CurrentRollSpeed, TargetRollSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
 }
+
+void AStarWingPawn::ShootBullet(float Val)
+{
+
+}

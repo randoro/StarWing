@@ -42,6 +42,9 @@ protected:
 	/** Bound to the horizontal axis */
 	void MoveRightInput(float Val);
 
+	/** Bound to the space action */
+	void ShootBullet(float Val);
+
 private:
 
 	/** How quickly forward speed changes */
