@@ -43,7 +43,7 @@ protected:
 	void MoveRightInput(float Val);
 
 	/** Bound to the space action */
-	void ShootBullet(float Val);
+	void ShootBullet();
 
 private:
 

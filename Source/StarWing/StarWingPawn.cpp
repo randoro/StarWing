@@ -79,6 +79,7 @@ void AStarWingPawn::SetupPlayerInputComponent(class UInputComponent* InputCompon
 	InputComponent->BindAxis("Thrust", this, &AStarWingPawn::ThrustInput);
 	InputComponent->BindAxis("MoveUp", this, &AStarWingPawn::MoveUpInput);
 	InputComponent->BindAxis("MoveRight", this, &AStarWingPawn::MoveRightInput);
+	InputComponent->BindAction("Shoot", IE_Pressed, this, &AStarWingPawn::ShootBullet);
 }
 
 void AStarWingPawn::ThrustInput(float Val)
@@ -124,7 +125,7 @@ void AStarWingPawn::MoveRightInput(float Val)
 	CurrentRollSpeed = FMath::FInterpTo(CurrentRollSpeed, TargetRollSpeed, GetWorld()->GetDeltaSeconds(), 2.f);
 }
 
-void AStarWingPawn::ShootBullet(float Val)
+void AStarWingPawn::ShootBullet()
 {
-
+	PlaneMesh->ToggleVisibility();
 }
