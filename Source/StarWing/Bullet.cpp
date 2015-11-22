@@ -7,6 +7,22 @@
 // Sets default values
 ABullet::ABullet()
 {
+	// Structure to hold one-time initialization
+	struct FConstructorStatics
+	{
+		ConstructorHelpers::FObjectFinderOptional<UStaticMesh> BulletMesh;
+		FConstructorStatics()
+			: BulletMesh(TEXT("/Game/StarterContent/Shapes/Shape_Sphere.Shape_Sphere"))
+		{
+		}
+	};
+	static FConstructorStatics ConstructorStatics;
+
+	// Create static mesh component
+	BulletMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BulletMesh0"));
+	BulletMesh->SetStaticMesh(ConstructorStatics.BulletMesh.Get());
+	RootComponent = BulletMesh;
+
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
