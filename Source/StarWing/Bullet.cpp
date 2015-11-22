@@ -18,6 +18,8 @@ ABullet::ABullet()
 	};
 	static FConstructorStatics ConstructorStatics;
 
+	
+
 	// Create static mesh component
 	BulletMesh = CreateDefaultSubobject<UStaticMeshComponent>(TEXT("BulletMesh0"));
 	BulletMesh->SetStaticMesh(ConstructorStatics.BulletMesh.Get());
@@ -26,12 +28,24 @@ ABullet::ABullet()
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
+	MovementComponent = CreateDefaultSubobject<UProjectileMovementComponent>("MoveComp");
+	MovementComponent->SetUpdatedComponent(RootComponent);
+	MovementComponent->ProjectileGravityScale = 0; //Don’t use gravity
+	MovementComponent->InitialSpeed = 3000.f;
+	MovementComponent->MaxSpeed = 3000.f;
+	MovementComponent->bShouldBounce = false;
+
+	SetLifeSpan(5000.0f);
+	
+
 }
 
 // Called when the game starts or when spawned
 void ABullet::BeginPlay()
 {
 	Super::BeginPlay();
+
+	
 	
 }
 
@@ -39,6 +53,5 @@ void ABullet::BeginPlay()
 void ABullet::Tick( float DeltaTime )
 {
 	Super::Tick( DeltaTime );
-
 }
 

@@ -13,6 +13,9 @@ class STARWING_API ABullet : public AActor
 	/** StaticMesh component that will be the visuals for our flying bullet*/
 	UPROPERTY(Category = Mesh, VisibleDefaultsOnly, BlueprintReadOnly, meta = (AllowPrivateAccess = "true"))
 	class UStaticMeshComponent* BulletMesh;
+
+	UPROPERTY()
+	UProjectileMovementComponent* MovementComponent;
 	
 public:	
 	// Sets default values for this actor's properties
