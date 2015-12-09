@@ -1,6 +1,7 @@
 // Fill out your copyright notice in the Description page of Project Settings.
 
 #include "StarWing.h"
+#include "StarWingPawn.h"
 #include "Ring.h"
 #include "StarWingGameMode.h"
 
@@ -54,9 +55,12 @@ void ARing::Tick( float DeltaTime )
 
 void ARing::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
 {
-	RingMesh->SetVisibility(false);
-	AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
-	gm->AddTime(3000);
+	if (OtherActor->IsA(AStarWingPawn::StaticClass()))
+	{
+		RingMesh->SetVisibility(false);
+		AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
+		gm->AddTime(3000);
+	}
 	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();
 }
 

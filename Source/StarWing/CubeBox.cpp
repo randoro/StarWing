@@ -2,6 +2,9 @@
 
 #include "StarWing.h"
 #include "CubeBox.h"
+#include "StarWingPawn.h"
+#include "StarWingGameMode.h"
+#include "Bullet.h"
 
 
 // Sets default values
@@ -23,6 +26,14 @@ ACubeBox::ACubeBox()
 	BoxMesh->SetStaticMesh(ConstructorStatics.BoxMesh.Get());
 	RootComponent = BoxMesh;
 
+	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerMesh0"));
+	Trigger->SetBoxExtent(FVector(50, 50, 50), true);
+	Trigger->AttachTo(RootComponent);
+
+	Trigger->OnComponentBeginOverlap.AddDynamic(this, &ACubeBox::OnBeginOverlap);
+	Trigger->OnComponentEndOverlap.AddDynamic(this, &ACubeBox::OnEndOverlap);
+
+	this->SetActorScale3D(FVector(10, 10, 5));
  	// Set this actor to call Tick() every frame.  You can turn this off to improve performance if you don't need it.
 	PrimaryActorTick.bCanEverTick = true;
 
@@ -42,3 +53,24 @@ void ACubeBox::Tick( float DeltaTime )
 
 }
 
+void ACubeBox::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex, bool bFromSweep, const FHitResult & SweepResult)
+{
+	if (OtherActor->IsA(AStarWingPawn::StaticClass()))
+	{
+		//BoxMesh->SetVisibility(false);
+		AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
+		gm->AddTime(10);
+	}
+	else if (OtherActor->IsA(ABullet::StaticClass()))
+	{
+		this->Destroy();
+		OtherActor->Destroy();
+	}
+	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();
+}
+
+
+void ACubeBox::OnEndOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, int32 OtherBodyIndex)
+{
+	//BoxMesh->SetVisibility(true);
+}
