@@ -58,6 +58,19 @@ void AStarWingPawn::Tick(float DeltaSeconds)
 	// Rotate plane
 	AddActorLocalRotation(DeltaRotation);
 
+	FRotator CurrentRot = GetActorRotation();
+
+	if (CurrentRot.Yaw > 90) 
+	{
+		CurrentRot.Yaw = 90;
+	}
+	if (CurrentRot.Yaw < -90)
+	{
+		CurrentRot.Yaw = -90;
+	}
+
+	SetActorRotation(CurrentRot);
+
 	// Call any parent class Tick implementation
 	Super::Tick(DeltaSeconds);
 }
