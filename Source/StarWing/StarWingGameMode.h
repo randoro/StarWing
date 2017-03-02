@@ -17,6 +17,12 @@ class AStarWingGameMode : public AGameMode
 	UPROPERTY(VisibleAnywhere)
 	int32 Time = 2000;
 
+	UPROPERTY(VisibleAnywhere)
+	float Health = 1.0f;
+
+	UPROPERTY(VisibleAnywhere)
+	float Boost = 1.0f;
+
 public:
 	AStarWingGameMode();
 
@@ -30,8 +36,17 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Time")
 	float GetHealth();
 
+	UFUNCTION(BlueprintPure, Category = "Time")
+	float GetBoost();
+
 	UFUNCTION(Category = "Time")
-	void AddTime(int32 AddedTime);
+	void SetTime(int32 NewTime);
+
+	UFUNCTION(Category = "Time")
+	void SetHealth(float NewHealth);
+
+	UFUNCTION(Category = "Time")
+	void SetBoost(float NewBoost);
 };
 
 

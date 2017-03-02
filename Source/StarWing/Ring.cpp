@@ -59,7 +59,8 @@ void ARing::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, i
 	{
 		RingMesh->SetVisibility(false);
 		AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
-		gm->AddTime(3000);
+		int32 time = gm->GetTime();
+		gm->SetTime(time+3000);
 	}
 	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();
 }

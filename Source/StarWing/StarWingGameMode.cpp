@@ -39,10 +39,25 @@ int32 AStarWingGameMode::GetTime()
 
 float AStarWingGameMode::GetHealth()
 {
-	return 0.5f;
+	return Health;
 }
 
-void AStarWingGameMode::AddTime(int32 AddedTime) 
+float AStarWingGameMode::GetBoost()
 {
-	Time += AddedTime;
+	return Boost;
+}
+
+void AStarWingGameMode::SetTime(int32 NewTime) 
+{
+	Time = NewTime;
+}
+
+void AStarWingGameMode::SetHealth(float NewHealth)
+{
+	Health = NewHealth;
+}
+
+void AStarWingGameMode::SetBoost(float NewBoost)
+{
+	Boost = NewBoost;
 }

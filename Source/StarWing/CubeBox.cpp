@@ -59,7 +59,9 @@ void ACubeBox::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp
 	{
 		//BoxMesh->SetVisibility(false);
 		AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
-		gm->AddTime(10);
+		float health = gm->GetHealth();
+		gm->SetHealth(health - 0.10f);
+		this->Destroy();
 	}
 	else if (OtherActor->IsA(ABullet::StaticClass()))
 	{
