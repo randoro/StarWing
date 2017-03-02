@@ -65,7 +65,10 @@ void ACubeBox::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp
 	}
 	else if (OtherActor->IsA(ABullet::StaticClass()))
 	{
-		this->Destroy();
+		int32 randomValue = FMath::RandRange(0, 100);
+		if (randomValue < 30) {
+			this->Destroy();
+		}
 		OtherActor->Destroy();
 	}
 	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();

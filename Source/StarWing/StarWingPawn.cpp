@@ -2,6 +2,7 @@
 
 #include "StarWing.h"
 #include "StarWingPawn.h"
+#include "StarWingGameMode.h"
 
 AStarWingPawn::AStarWingPawn()
 {
@@ -99,8 +100,19 @@ void AStarWingPawn::ThrustInput(float Val)
 {
 	// Is there no input?
 	bool bHasInput = !FMath::IsNearlyEqual(Val, 0.f);
+
+	AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
+	float boost = gm->GetBoost();
+	bool hasBoost = false;
+	if (bHasInput && boost > -0.3f) {
+		gm->SetBoost(boost - 0.01f);
+	}
+	if (bHasInput && boost > 0.0f) {
+		hasBoost = true;
+	}
+
 	// If input is not held down, reduce speed
-	float CurrentAcc = bHasInput ? (Val * Acceleration) : (-0.5f * Acceleration);
+	float CurrentAcc = (bHasInput && hasBoost) ? (Val * Acceleration) : (-0.5f * Acceleration);
 	// Calculate new speed
 	float NewForwardSpeed = CurrentForwardSpeed + (GetWorld()->GetDeltaSeconds() * CurrentAcc);
 	// Clamp between MinSpeed and MaxSpeed
