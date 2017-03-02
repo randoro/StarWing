@@ -31,7 +31,7 @@ void AStarWingGameMode::Tick(float DeltaTime)
 
 	Time--;
 	if (Health < 1.0f) {
-		Health += 0.01f;
+		Health += 0.0001f;
 	}
 	if (Boost < 1.0f) {
 		Boost += 0.005f;

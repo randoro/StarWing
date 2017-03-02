@@ -61,13 +61,13 @@ void AStarWingPawn::Tick(float DeltaSeconds)
 
 	FRotator CurrentRot = GetActorRotation();
 
-	if (CurrentRot.Yaw > 90) 
+	if (CurrentRot.Yaw > 45) 
 	{
-		CurrentRot.Yaw = 90;
+		CurrentRot.Yaw = 45;
 	}
-	if (CurrentRot.Yaw < -90)
+	if (CurrentRot.Yaw < -45)
 	{
-		CurrentRot.Yaw = -90;
+		CurrentRot.Yaw = -45;
 	}
 
 	SetActorRotation(CurrentRot);

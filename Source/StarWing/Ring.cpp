@@ -27,6 +27,7 @@ ARing::ARing()
 
 	Trigger = CreateDefaultSubobject<UBoxComponent>(TEXT("TriggerMesh0"));
 	Trigger->AttachTo(RootComponent);
+	Trigger->SetBoxExtent(FVector(70.f, 70.f, 18.f)); //fix size
 	
 
 
@@ -61,6 +62,7 @@ void ARing::OnBeginOverlap(AActor* OtherActor, UPrimitiveComponent* OtherComp, i
 		AStarWingGameMode* gm = (AStarWingGameMode*)GetWorld()->GetAuthGameMode();
 		int32 time = gm->GetTime();
 		gm->SetTime(time+3000);
+		this->Destroy();
 	}
 	//(AStarWingGameMode*)GetWorld()->GetAuthGameMode();
 }
