@@ -37,6 +37,11 @@ int32 AStarWingGameMode::GetTime()
 	return Time;
 }
 
+float AStarWingGameMode::GetHealth()
+{
+	return 0.5f;
+}
+
 void AStarWingGameMode::AddTime(int32 AddedTime) 
 {
 	Time += AddedTime;

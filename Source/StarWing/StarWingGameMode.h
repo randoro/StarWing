@@ -27,6 +27,9 @@ public:
 	UFUNCTION(BlueprintPure, Category = "Time")
 	int32 GetTime();
 
+	UFUNCTION(BlueprintPure, Category = "Time")
+	float GetHealth();
+
 	UFUNCTION(Category = "Time")
 	void AddTime(int32 AddedTime);
 };
